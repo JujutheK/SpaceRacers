@@ -8,7 +8,6 @@ import scipy
 import numpy
 import pygame
 import math
-import SpaceRacers_settings
 import random
 import pygame
 pygame.init()
@@ -49,14 +48,14 @@ AU = 149.6e9
     # -------------------------------------------------------------------
 
 class Physics:
-        def __init__(self, mass, position_x,position_y, velocity_x, velocity_y, Radius,colour):
+    def __init__(self, mass, position_x,position_y, velocity_x, velocity_y, Radius,colour):
             self.mass = mass
             self.position = numpy.array((position_x, position_y), dtype=float)
             self.velocity = numpy.array((velocity_x,velocity_y), dtype=float)
             self.footprint = Radius * Scale
             self.color = colour
         
-        def gravitational_force(self, other):
+    def gravitational_force(self, other):
             x_distance = other.position - self.position
             y_distance = other.position - self.position
             distance_CelestialBodies = math.sqrt(x_distance**2 + y_distance**2)
@@ -64,7 +63,7 @@ class Physics:
                 distance_CelestialBodies = self.radius + other.radius
             self.gravitational_force = (G * self.mass * other.mass) / (distance_CelestialBodies**2)
             
-        def update(self, CelestialBodies):
+    def update(self, CelestialBodies):
             for CelestialBody in CelestialBodies:
                 total_gravitationalAcceleration = numpy.array((0,0), dtype=float)
                 if not self:   
@@ -75,7 +74,7 @@ class Physics:
 # if you are looking here then its because you probably because of capitalization. 
 # Sucks to suck but you gave a bunch of shitty names at the start.   ¯\_(ツ)_/¯ 
 # Camera = class =/= camera 
-        def draw(self, surface, camera):
+    def draw(self, surface, camera):
             center_width = camera.camera_width//2
             center_height = camera.camera_height//2
             self.x = int(center_width + (self.position[0] - camera.camera_position[0]) * Scale)

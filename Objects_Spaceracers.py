@@ -1,9 +1,8 @@
 import matplotlib
 import scipy
 import numpy
-import pygame
 import math
-import SpaceRacers_settings
+import Physics_SpaceRacers
 import random
 import pygame
 import Physics_SpaceRacers
